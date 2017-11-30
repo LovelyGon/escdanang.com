@@ -14,3 +14,6 @@
 Route::get('hello', function () {
     return view('welcome');
 });
+Route::get('admin/home', function (){
+    return view('admin.admin-home');
+});
