@@ -22,10 +22,6 @@ class Partner extends Model
     {
         return $this->hasMany('App\Tour');
     }
-    public function hotel()
-    {
-        return $this->hasMany('App\Hotel');
-    }
     public function recruitment()
     {
         return $this->hasMany('App\Recruitment');
