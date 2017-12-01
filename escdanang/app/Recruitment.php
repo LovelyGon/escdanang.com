@@ -19,6 +19,6 @@ class Recruitment extends Model
     ];
     public function partner()
     {
-        return $this->belongsTo('App\partner');
+        return $this->belongsTo('App\Partner');
     }
 }

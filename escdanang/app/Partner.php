@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Partners extends Model
+class Partner extends Model
 {
     protected $fillable = [
        'comary_name',
@@ -12,10 +12,22 @@ class Partners extends Model
        'email',
        'website',
        'phone',
-       'user_id' 
+       'partnerType_id' 
     ];
-    public function user()
+    public function partnerType()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\PartnerType');
+    }
+    public function tour()
+    {
+        return $this->hasMany('App\Tour');
+    }
+    public function hotel()
+    {
+        return $this->hasMany('App\Hotel');
+    }
+    public function recruitment()
+    {
+        return $this->hasMany('App\Recruitment');
     }
 }

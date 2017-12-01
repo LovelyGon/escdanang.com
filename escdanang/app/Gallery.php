@@ -1,0 +1,17 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Gallery extends Model
+{
+    protected $fillable = [
+        'image',
+        'tour_id'
+    ];
+    public function tour()
+    {
+        return $this->belongTo('App\Tour');
+    }
+}

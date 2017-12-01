@@ -30,20 +30,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\News');
     }
-     public function customers()
+     public function question()
     {
-        return $this->hasMany('App\Customer');
+        return $this->hasMany('App\Question');
     }
-    public function recruitments()
+    public function comment()
     {
-        return $this->hasMany('App\Recruitment');
+        return $this->hasMany('App\Comment');
     }
-    public function partners()
-    {
-        return $this->hasMany('App\Partner');
-    } 
-    public function vouchers()
-    {
-        return $this->hasMany('App\Voucher');
-    } 
 }
