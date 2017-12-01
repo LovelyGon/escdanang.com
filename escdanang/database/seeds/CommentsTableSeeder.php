@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ContactsTableSeeder extends Seeder
+class CommentsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,8 @@ class ContactsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('contacts')->insert([
-            ['website' => 'escdanang.com', 'comment' => '', ]
-            
+        DB::table('comments')->insert([
+            ['content' => 'abc', 'question_id'=>'', 'user_id' => '']
         ]);
     }
 }

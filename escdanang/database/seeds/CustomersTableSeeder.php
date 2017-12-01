@@ -12,7 +12,7 @@ class CustomersTableSeeder extends Seeder
     public function run()
     {
         DB::table('customers')->insert([
-            ['name' => 'hhhhhhh', 'phone' => '0123456789', 'address' => 'aa', 'email'=>'abc2gmail.com', 'faceboo'=>'', 'comment'=>'']
+            ['name' => 'hhhhhhh', 'phone' => '0123456789', 'address' => 'aa', 'email'=>'abc2gmail.com', 'facebook'=>'', 'comment'=>'']
         ]);
     }
 }
