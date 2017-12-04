@@ -15,12 +15,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset('Lib/bower_components/font-awesome/css/font-awesome.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('Lib/bower_components/Ionicons/css/ionicons.min.css')}}">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>  
+<!-- Optional theme -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('Lib/dist/css/AdminLTE.min.css')}}">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="{{asset('Lib/dist/css/skins/skin-blue.min.css')}}">
+  <link rel="stylesheet" href="{{asset('css/mycss.css')}}">
+  <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -72,7 +81,6 @@ desired effect
       @yield('content_header')
     <!-- Main content -->
     <section class="content container-fluid">
-
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
@@ -165,17 +173,21 @@ desired effect
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-
+ @yield('script')
 <!-- jQuery 3 -->
 <script src="{{asset('Lib/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('Lib/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('Lib/dist/js/adminlte.min.js')}}"></script>
-
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+<!--  delete confirm -->
+<script src="{{asset('js/jquery.confirm.min.js')}}"></script>
+<script>
+    $(".simpleConfirm").confirm();
+</script>
 </body>
 </html>
 
