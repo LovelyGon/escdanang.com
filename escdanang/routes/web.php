@@ -15,5 +15,8 @@ Route::get('hello', function () {
     return view('welcome');
 });
 Route::get('admin/home', function (){
-    return view('admin.users');
+    return view('admin.enjoy_yourlife');
+});
+Route::get('demo', function (){
+    return view('admin.admin_master');
 });
