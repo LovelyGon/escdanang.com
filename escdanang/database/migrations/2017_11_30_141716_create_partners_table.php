@@ -20,8 +20,7 @@ class CreatePartnersTable extends Migration
             $table->string('email');
             $table->string('website');
             $table->integer('phone');
-            $table->integer('partnerType_id')->unsigned()->nullable();
-            $table->foreign('partnerType_id')->references('id')->on('partnerTypes');
+            $table->string('partnerType');
             $table->timestamps();
         });
     }

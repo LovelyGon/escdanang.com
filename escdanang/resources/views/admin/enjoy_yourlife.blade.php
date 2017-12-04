@@ -89,6 +89,12 @@
                     <script>CKEDITOR.replace('add_description');</script>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" style="text-align: left"></label>
+                  <div class="col-sm-10">
+                  <input type="file" class="input09">
+                </div>
+                </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
@@ -132,6 +138,12 @@
                     <script>CKEDITOR.replace('edit_description');</script>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" style="text-align: left"></label>
+                  <div class="col-sm-10">
+                  <input type="file" class="input09">
+                  </div>
+                </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
@@ -145,4 +157,12 @@
     </div>
   </div> 
 @stop
-
+@section('script')
+  <script type="text/javascript" src="{{asset('js/bootstrap-filestyle.min.js')}}"> </script>
+  <script>
+   $('.input09').filestyle({
+        text : 'Choose file',
+        btnClass : 'btn-primary',
+      });
+  </script>
+@stop
