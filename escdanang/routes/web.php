@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('hello', function () {
+Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('admin/home', function (){
+//     return view('admin.users');
+// });
 Route::get('admin/home', function (){
     return view('admin.enjoy_yourlife');
-});
-Route::get('demo', function (){
-    return view('admin.admin_master');
 });
