@@ -16,10 +16,11 @@ class CreateLegalServicesTable extends Migration
         Schema::create('legalServices', function (Blueprint $table) {
             $table->increments('id');
             $table->string('service_name');
+            $table->longText('short_description');
             $table->longText('description');
             $table->string('image');
             $table->string('type_of_service');
-            $table->float('price');
+            $table->string('price');
             $table->timestamps();
         });
     }
