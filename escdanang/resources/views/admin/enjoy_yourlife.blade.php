@@ -77,6 +77,12 @@
                   </div>
                 </div>
                 <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Service price</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3">
+                  </div>
+                </div>
+                <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: left">Short Description</label>
                   <div class="col-sm-10">
                     <textarea name="" id="" cols="10" rows="5" class="form-control"></textarea>
@@ -121,6 +127,12 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Service name</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputEmail3">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Service price</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputEmail3">
                   </div>

@@ -12,12 +12,8 @@ class Partner extends Model
        'email',
        'website',
        'phone',
-       'partnerType_id' 
+       'partnerType' 
     ];
-    public function partnerType()
-    {
-        return $this->belongsTo('App\PartnerType');
-    }
     public function tour()
     {
         return $this->hasMany('App\Tour');
