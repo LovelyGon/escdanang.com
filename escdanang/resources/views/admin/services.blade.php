@@ -258,7 +258,6 @@
       unhighlight: function(element) {
             $(element).closest('.form-group').removeClass('has-error');
         }
-  
    });
     // validate form edit
       $('#editSV').validate({

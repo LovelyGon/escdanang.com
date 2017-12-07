@@ -18,7 +18,7 @@ Route::get('/', function () {
 //     return view('admin.users');
 // });
 Route::get('admin/home', function (){
-    return view('admin.services');
+    return view('admin.uu');
 });
 
 Route:: get('admin/services','ServiceController@index');
