@@ -18,5 +18,11 @@ Route::get('/', function () {
 //     return view('admin.users');
 // });
 Route::get('admin/home', function (){
-    return view('admin.enjoy_yourlife');
+    return view('admin.uu');
 });
+
+Route:: get('admin/services','ServiceController@index');
+Route::post('addSV','ServiceController@store');
+Route::post('admin/editSV','ServiceController@Edit');
+Route::get('admin/editSV','ServiceController@getEdit');
+Route::get('admin/deleteSV/{id}','ServiceController@Delete');
