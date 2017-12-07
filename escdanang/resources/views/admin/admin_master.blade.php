@@ -16,8 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('Lib/bower_components/Ionicons/css/ionicons.min.css')}}">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>  
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> 
 <!-- Optional theme -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
@@ -29,7 +28,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="{{asset('Lib/dist/css/skins/skin-blue.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/mycss.css')}}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -186,8 +187,14 @@ desired effect
 <!--  delete confirm -->
 <script src="{{asset('js/jquery.confirm.min.js')}}"></script>
 <script>
-    $(".simpleConfirm").confirm();
+    $(document).ready(function(){
+      $(".simpleConfirm").confirm();
+    });
+    
+      
+  
 </script>
+
 </body>
 </html>
 

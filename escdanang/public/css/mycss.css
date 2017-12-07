@@ -14,3 +14,11 @@
 {
 	width: 100px;
 }
+label.error
+{
+	color: red;
+}
+/* .desc_vli
+{
+	display: none;
+} */
