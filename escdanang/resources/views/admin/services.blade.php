@@ -47,6 +47,9 @@
                     @endif  
                    </tbody>
                </table>
+               <script>
+                 
+               </script>
           </div>
           <a href=""><button class="btn btn-primary pull-right" style="margin-bottom: 20px;
     margin-right: 10px;"><span class="fa fa-reply"></span>&nbsp&nbspBACK</button></a>
@@ -203,16 +206,20 @@
   <script> 
 
     $(function () {
-        $('#result_table').DataTable({ //pagination by datatable
-          'paging'      : true,
-          'lengthChange': false,
-          'searching'   : false,
-          'info'        : true,
-          'autoWidth'   : false,
-          "ordering": true,
-          "aaSorting": []
-        });
+      $('#result_table').DataTable({ //pagination by datatable
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'info'        : true,
+        'autoWidth'   : false,
+        "ordering": true,
+        "aaSorting": [],
+        "columnDefs":[{
+            "targets": 5,
+            "orderable": false
+            },{ "targets": 4,"orderable": false},{"targets": 3,"orderable": false}]
       });
+    });
 //-------------------------------------------------------------------------------------------
     $('#addSV').validate({ // validate form add
     ignore: [],
@@ -260,6 +267,45 @@
     }
   });
 //-------------------------------------------------------------------------------
+   $(document).ready(function(){
+     $(".simpleConfirm").click(function(event){// delete by ajax
+       event.preventDefault();
+        $id = $(this).attr('delete_id');
+        $(this).confirm({
+         title:'Delete Service confirmation.',
+         text:'Are you sure want to delete ?',
+         confirm: function() {
+            $.ajax({
+            type: "get",
+            url: 'deleteSV',
+            data: {'id':$id},
+            success:function(data){
+             $('#result').html(data);
+            }
+          });         
+          }
+          });
+          });
+    //----------------------------------------------------------------------------
+     $('.edit_ajax').click(function(event){ // ajax do du lieu vao form edit
+          event.preventDefault();
+          $id = $(this).attr('edit_id');
+          $.ajax({
+            type: "get",
+            url: 'editSV',
+            data: {'id':$id},
+            success:function(data){
+              $('#namesv').attr('value',data[0]);
+              $('#pricesv').attr('value',data[1]);
+              $('#edesc_Short').val(data[2]); 
+              CKEDITOR.instances['edit_desc'].setData(data[3]);
+              $('#id_edit').attr('value',data[4]);
+              $('#op_id').text(data[5]);
+            }
+          });
+        });
+    });
+//---------------------------------------------------------------------------------             
  // $(document).on('click','.pagination a',function(event){ //pagination on server by ajax
  //  event.preventDefault();
  //  var page = $(this).attr('href').split('page=')[1];

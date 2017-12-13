@@ -34,7 +34,11 @@
                     'info'        : true,
                     'autoWidth'   : false,
                     "ordering": true,
-                    "aaSorting": []
+                    "aaSorting": [],
+                    "columnDefs":[{
+                        "targets": 5,
+                        "orderable": false
+                        },{ "targets": 4,"orderable": false},{"targets": 3,"orderable": false}]
                   });
 //-----------------------------------------------------------------------------------------
                   $(".simpleConfirm").click(function(event){// delete by ajax
