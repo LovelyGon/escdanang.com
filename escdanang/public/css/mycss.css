@@ -17,8 +17,13 @@
 label.error
 {
 	color: red;
+	font-weight: normal;
 }
-/* .desc_vli
+.modal-header
 {
-	display: none;
-} */
+	color: red;
+}
+.pagination
+{
+	margin: 0px 0px;
+}

@@ -31,7 +31,7 @@
         <li class="active"><a href="#"><i class="fa fa-user"></i> <span>User</span></a></li>
         <li><a href="#"><i class="fa fa-users"></i> <span>Customers</span></a></li>
         <li><a href="#"><i class="fa fa-grav"></i> <span>Recruitments</span></a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-hourglass"></i> <span> Services</span></a></li>
+        <li><a href="{{url('admin/services')}}" id="services"><i class="glyphicon glyphicon-hourglass"></i> <span> Services</span></a></li>
         <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i> <span>Promotions</span></a></li>
         <li><a href="#"><i class="fa fa-question"></i> <span>QAs</span></a></li>
         <li><a href="#"><i class="glyphicon glyphicon-comment"></i> <span>Contacts</span></a></li>

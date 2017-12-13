@@ -17,40 +17,44 @@
   			<div class="box-body">
   			<fieldset style="border: 1px solid #ecf0f5 ;margin: 10px">
   				<legend style =" margin-left: 15px;border: none; width: auto" style =" margin-left: 15px;border: none; width: auto;"><strong style="font-size:30px ">SERVICES</strong></legend>
-  				<div style="margin: 10px" ><button  id="modal" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>Add Service</button></div>
-  				<div style="margin: 10px"><table class="table table-bordered">
+  				<div style="margin: 10px" ><button  id="modal" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>&nbsp&nbspAdd Service</button></div>
+  				<div style="margin: 10px" id="result">
+          <!--   content of table -->
+             <table class="table table-bordered" id="result_table">
                    <thead>
-		                <tr>
-		                    <th class="th_center">Services name</th>
+                    <tr>
+                        <th class="th_center">Services name</th>
+                        <th class="th_center">Services price</th>
                         <th class="th_center">Services type</th>
-		                    <th class="th_center">Short Description</th>
-		                    <th class="th_center">Description</th>
-		                    <th class="th_center">Action</th>
-		                </tr>
+                        <th class="th_center">Short Description</th>
+                        <th class="th_center">Description</th>
+                        <th class="th_center">Action</th>
+                    </tr>
                    </thead>
-                   <tbody>
+                   <tbody id="body">
                     @if(isset($services))
                       @foreach($services as $sv)
-                     	<tr>
-                     		<td class="td_center">{{$sv->service_name}}</td>
-                     		<td class="td_center">{{$sv->type_of_service}}</td>
-                     		<td class="td_center">{{$sv->short_description}}</td>
-                        <td class="td_center">{!!$sv->description!!}</td>
-                     		<td class="td_center"><a edit_id="{{$sv->id}}" class="modalff" id="modal" data-toggle="modal"  data-target="#myModal_Edit"><span class="glyphicon glyphicon-pencil"></span></a>
-                     	  <a href="{{url('admin/deleteSV')}}/{{$sv->id}}" class="simpleConfirm"><span class="glyphicon glyphicon-trash"></span></a></td>
-                     	</tr>
+                      <tr>
+                        <td class="td_center">{{$sv->service_name}}</td>
+                        <td class="td_center">{{$sv->price}}</td>
+                        <td class="td_center">{{$sv->type_of_service}}</td>
+                        <td class="td_center">{{substr($sv->short_description,0,20)}}<a title="{{$sv->short_description}}">...</a></td>
+                        <td class="td_center">{{substr($sv->description,0,50)}}<a title="{{$sv->description}}">...</a></td>
+                        <td class="td_center"><a edit_id="{{$sv->id}}" class="edit_ajax" id="modal" data-toggle="modal"  data-target="#myModal_Edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a delete_id="{{$sv->id}}"  class="simpleConfirm"><span class="glyphicon glyphicon-trash"></span></a></td>
+                      </tr>
                       @endforeach
                     @endif  
                    </tbody>
-               </table></div>
-                 {{$services->links()}} 
-               	<a href=""><button class="btn btn-primary pull-right" style="margin-bottom: 20px;
-    margin-right: 10px;"><span class="fa fa-reply"></span>BACK</button></a>
+               </table>
+          </div>
+          <a href=""><button class="btn btn-primary pull-right" style="margin-bottom: 20px;
+    margin-right: 10px;"><span class="fa fa-reply"></span>&nbsp&nbspBACK</button></a>
   			</fieldset>
       </div>
   		</div>
   	</div>
-  </div>
+  </div> 
 <!--   Modal  Add-->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-lg"> 
@@ -61,19 +65,19 @@
           <h4 class="modal-title"><strong>Add Service</strong></h4>
         </div>
         <div class="modal-body">
-           <form class="form-horizontal" action="{{url('addSV')}}" method="post" id="addSV" enctype="multipart/form-data">
+           <form class="form-horizontal" action="{{url('admin/addSV')}}" method="post" id="addSV" enctype="multipart/form-data">
             {!! csrf_field() !!}
               <div class="box-body">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Service name</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="namSV" name="nameSV">
+                    <input type="text" class="form-control" id="nameSV" name="nameSV">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Service type</label>
                   <div class="col-sm-10">
-                    <select name="typeSV" class="form-control">
+                    <select name="typeSV" class="form-control" id="typeSV">
                       <option value="0">--Choose Service--</option>
                       <option value="Legal Service"> Legal Service</option>
                       <option value="Enjoy your life Service"> Enjoy your life Service</option>
@@ -83,26 +87,26 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Service price</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="" name="priceSV">
+                    <input type="text" class="form-control" id="priceSV" name="priceSV">
                   </div>
                 </div>  
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: left">Short Description</label>
                   <div class="col-sm-10">
-                    <textarea name="desc_Short" id="" cols="20" rows="5" class="form-control"></textarea>
+                    <textarea name="desc_Short" id="desc_Short" cols="20" rows="5" class="form-control" style="width: -webkit-fill-available;"></textarea>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: left">Description</label>
                   <div class="col-sm-10 " id="desc_error">
-                    <textarea name="description" id="add_desc" cols="10" rows="5" class="form-control"></textarea>
+                    <textarea name="description" id="add_desc" cols="10" rows="5" class="form-control" ></textarea>
                     <script>CKEDITOR.replace('add_desc');</script>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label" style="text-align: left"></label>
                   <div class="col-sm-10" id="demo" >
-                  <input type="file" class="input09" name="imageSV">
+                  <input type="file" class="input09" name="imageSV" id="imageSV"> 
                   </div>
                 </div>
               </div>
@@ -140,8 +144,8 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Service type</label>
                   <div class="col-sm-10">
-                    <select name="typeSV" class="form-control">
-                      <option value="0">--Choose Service--</option>
+                    <select name="typeSV" class="form-control" id="select_id">
+                      <option value="0" id="op_id"></option>
                       <option value="Legal Service"> Legal Service</option>
                       <option value="Enjoy your life Service"> Enjoy your life Service</option>
                     </select>
@@ -150,13 +154,13 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Service price</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="priceSV" name="priceSV">
+                    <input type="text" class="form-control" id="pricesv" name="priceSV">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: left">Short Description</label>
                   <div class="col-sm-10">
-                   <textarea name="desc_Short" id="desc_Short" cols="20" rows="5" class="form-control" ></textarea>
+                   <textarea name="desc_Short" id="edesc_Short" cols="20" rows="5" class="form-control" style="width: -webkit-fill-available;" ></textarea>
                   </div>
                 </div>
                 <div class="form-group">
@@ -188,129 +192,84 @@
 @section('script')
   <script type="text/javascript" src="{{asset('js/bootstrap-filestyle.min.js')}}"></script>
   <script>
-    $('.input09').filestyle({
+    $('.input09').filestyle({//format input type file
         text : 'Choose file',
         btnClass : 'btn-primary'
     });
   </script>
-<!--   validation form -->
+<!--   validation form  script-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js"></script>
   <script> 
-   $.validator.addMethod("ckrequired", function (value, element) { // validate ckeditor
-            var idname = $(element).attr('id');  
-            var editor = CKEDITOR.instances[idname];  
-            var ckValue = GetTextFromHtml(editor.getData()).replace(/<[^>]*>/gi, '').trim();  
-            if (ckValue.length === 0) {  
-   //if empty or trimmed value then remove extra spacing to current control  
-                $(element).val(ckValue);  
-            } else {  
-   //If not empty then leave the value as it is  
-                $(element).val(editor.getData());  
-            } 
-            return $(element).val().length > 0;  
-        },"Description service is required");  
-  
-   function GetTextFromHtml(html){  
-            var dv = document.createElement("DIV");  
-            dv.innerHTML = html;  
-            return dv.textContent || dv.innerText || "";  
-        }
 
-   // validate form add
-    $('#addSV').validate({
+    $(function () {
+        $('#result_table').DataTable({ //pagination by datatable
+          'paging'      : true,
+          'lengthChange': false,
+          'searching'   : false,
+          'info'        : true,
+          'autoWidth'   : false,
+          "ordering": true,
+          "aaSorting": []
+        });
+      });
+//-------------------------------------------------------------------------------------------
+    $('#addSV').validate({ // validate form add
     ignore: [],
     debug: false,
     rules:{
       nameSV:{
         required:true
-      },
-      priceSV:{
-        required:true
-      },
-      desc_Short:{
-        required:true
-      },
-      description:{
-        ckrequired:true
-      }, 
-      imageSV:{
-        required:true
-      }   
+      }
     },
      messages:{
        nameSV:{
-         required:'Service name is required'
-       },
-       priceSV:{
-         required:'Service price is required'
-       },
-       desc_Short:{
-         required:'Short description is required'
-       },
-       imageSV:{
-        required :'Image service is required and less than 2MB.',
+         required:'Service name is required and cannot be empty.'
        } 
-      },
-      highlight: function(element) {
-            $(element).closest('.form-group').addClass('has-error');
-        },
-      unhighlight: function(element) {
-            $(element).closest('.form-group').removeClass('has-error');
-        }
+      }
    });
-    // validate form edit
-      $('#editSV').validate({
+//---------------------------------------------------------------------------------------
+      $('#editSV').validate({// validate form edit
       ignore: [],
       debug: false,
-    rules:{
-      nameSV:{
-        required:true
+      rules:{
+        nameSV:{
+          required:true
+        }
       },
-      priceSV:{
-        required:true
-      },
-      desc_Short:{
-        required:true
-      },
-      description:{
-        ckrequired:true
-       }  
-    },
-     messages:{
+      messages:{
        nameSV:{
-         required:'Service name is required'
-       },
-       priceSV:{
-         required:'Service price is required'
-       },
-       desc_Short:{
-         required:'Short description is required'
+         required:'Service name is required and cannot be empty.'
        }
-      },
-      highlight: function(element) {
-            $(element).closest('.form-group').addClass('has-error');
-        },
-      unhighlight: function(element) {
-            $(element).closest('.form-group').removeClass('has-error');
-        }
-
+      }
    });
-
-   $('.modalff').click(function(){  // do du lieu vao form edit
-      $id = $(this).attr('edit_id');
-      $.ajax({
-        type: "get",
-        url: 'editSV',
-        data: {'id':$id},
-        success:function(data){
-          $('#namesv').attr('value',data[0]);
-          $('#priceSV').attr('value',data[1]);
-          $('#desc_Short').val(data[2]); 
-          CKEDITOR.instances['edit_desc'].setData(data[3]);
-          $('#id_edit').attr('value',data[4]);
-        }
-      });
-   });
+//-----------------------------------------------------------------------------------
+  $('#addSV').ajaxForm({ // add by ajax
+     success: function(response) {
+        $('#addSV')[0].reset();
+        $('#myModal').modal('hide');
+        $('#result').html(response);
+    }
+  });
+//----------------------------------------------------------------------------------
+  $('#editSV').ajaxForm({ // edit by ajax
+     success: function(response) {
+        $('#editSV')[0].reset();
+        $('#myModal_Edit').modal('hide');
+        $('#result').html(response);
+    }
+  });
+//-------------------------------------------------------------------------------
+ // $(document).on('click','.pagination a',function(event){ //pagination on server by ajax
+ //  event.preventDefault();
+ //  var page = $(this).attr('href').split('page=')[1];
+  
+ //   $.ajax({
+ //    url: 'paginate?page='+page,
+ //    success:function(data){
+ //        $('#result').html(data);
+ //     }
+ //   });
+ // });
 </script>
 @stop

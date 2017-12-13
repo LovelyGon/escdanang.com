@@ -18,11 +18,11 @@ Route::get('/', function () {
 //     return view('admin.users');
 // });
 Route::get('admin/home', function (){
-    return view('admin.uu');
+    return view('admin.admin-home');
 });
 
-Route:: get('admin/services','ServiceController@index');
-Route::post('addSV','ServiceController@store');
-Route::post('admin/editSV','ServiceController@Edit');
+Route:: get('admin/services','PageController@index');
+Route::post('admin/addSV','ServiceController@store');
 Route::get('admin/editSV','ServiceController@getEdit');
-Route::get('admin/deleteSV/{id}','ServiceController@Delete');
+Route::post('admin/editSV','ServiceController@Edit');
+Route::get('admin/deleteSV','ServiceController@Delete');
