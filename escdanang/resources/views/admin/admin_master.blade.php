@@ -188,15 +188,6 @@ desired effect
      user experience. -->
 <!--  delete confirm -->
 <script src="{{asset('js/jquery.confirm.min.js')}}"></script>
-<script>
-    $(document).ready(function(){
-      $(".simpleConfirm").confirm({
-        title:'Delete Service confirmation.',
-        text:'Are you sure want to delete ?'
-      });
-    });
-    
-</script>
 </body>
 </html>
 
