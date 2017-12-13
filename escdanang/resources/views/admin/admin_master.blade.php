@@ -13,13 +13,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset('Lib/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('Lib/bower_components/font-awesome/css/font-awesome.min.css')}}">
+  <link rel="stylesheet" href="{{asset('Lib/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{asset('Lib/bower_components/Ionicons/css/ionicons.min.css')}}">
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <!-- Optional theme -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
+ <!--  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+  <script src="//cdn.ckeditor.com/4.4.3/basic/ckeditor.js"></script>
 <!-- Latest compiled and minified JavaScript -->
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('Lib/dist/css/AdminLTE.min.css')}}">
@@ -29,9 +31,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset('Lib/dist/css/skins/skin-blue.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/mycss.css')}}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdn.ckeditor.com/4.7.3/full/ckeditor.js"></script>
-
-
+  <script src="{{asset('js/jquery.form.min.js')}}"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -82,7 +82,7 @@ desired effect
       @yield('content_header')
     <!-- Main content -->
     <section class="content container-fluid">
-      <!--------------------------
+    <!--------------------------
         | Your Page Content Here |
         -------------------------->
         @yield('content')
@@ -179,6 +179,8 @@ desired effect
 <script src="{{asset('Lib/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('Lib/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('Lib/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('Lib/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('Lib/dist/js/adminlte.min.js')}}"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
@@ -188,13 +190,13 @@ desired effect
 <script src="{{asset('js/jquery.confirm.min.js')}}"></script>
 <script>
     $(document).ready(function(){
-      $(".simpleConfirm").confirm();
+      $(".simpleConfirm").confirm({
+        title:'Delete Service confirmation.',
+        text:'Are you sure want to delete ?'
+      });
     });
     
-      
-  
 </script>
-
 </body>
 </html>
 
