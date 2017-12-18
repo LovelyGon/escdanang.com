@@ -20,7 +20,6 @@ class CreateCustomersTable extends Migration
             $table->string('address');
             $table->string('email');
             $table->string('facebook');
-            $table->text('comment');
             $table->timestamps();
         });
     }
