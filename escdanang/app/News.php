@@ -8,10 +8,9 @@ class News extends Model
 {
     protected $fillable = [
         'title',
-        'description',
+        'short_description',
         'image',
-        'content',
-        'submit_date',
+        'type',
         'content',
         'start_date',
         'end_date',
