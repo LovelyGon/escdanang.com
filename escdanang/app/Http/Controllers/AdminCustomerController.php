@@ -19,7 +19,7 @@ class AdminCustomerController extends Controller
       $customer ->facebook = $rq ->facebook;
       $customer ->save();
       $customers = Customer::orderBy('id','desc')->get();
-      $view = view('admin.ajaxcustomer')->with(['customers'=>$customers]);
+      $view = view('admin.Customer.ajaxcustomer')->with(['customers'=>$customers]);
       return Response($view);
     }
 //------------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class AdminCustomerController extends Controller
    $customer ->facebook = $rq ->facebook;
     $customer->save();
    $customers = Customer::orderBy('id','desc')->get();
-   $view = view('admin.ajaxcustomer')->with(['customers'=>$customers]);
+   $view = view('admin.Customer.ajaxcustomer')->with(['customers'=>$customers]);
       return Response($view);
     }
 //------------------------------------------------------------------------------------
@@ -57,14 +57,14 @@ class AdminCustomerController extends Controller
         $customer->delete();
       }
       $customers = Customer::orderBy('id','desc')->get();
-      $view = view('admin.ajaxcustomer')->with(['customers'=>$customers]);
+      $view = view('admin.Customer.ajaxcustomer')->with(['customers'=>$customers]);
       return response($view);
     }
 //----------------------------------------------------------------------------------------    
     public function index()
     {
         $customers = Customer::orderBy('id','desc')->get();
-        return view('admin.customers')->with(['customers'=>$customers]);
+        return view('admin.Customer.customers')->with(['customers'=>$customers]);
     }
 }
 
