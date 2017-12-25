@@ -2,10 +2,6 @@
 {
 	text-align: center;
 }
-.td_center
-{
-	text-align: center;
-}
 .form-control
 {
 	width: 200px;
@@ -26,4 +22,18 @@ label.error
 .pagination
 {
 	margin: 0px 0px;
+}
+.treeview-menu>li
+{
+	margin-left: 35px;
+}
+/* tooltip css */
+.tooltip02 + .tooltip > .tooltip-inner
+{
+  background-color:#85b8e4; 
+  color: #272829; 
+  border: 1px solid #85b8e4; 
+  max-width: 100% !important;
+  padding: 5px;
+  font-size: 14px;
 }

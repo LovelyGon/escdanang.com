@@ -30,12 +30,21 @@
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="#"><i class="fa fa-user"></i> <span>User</span></a></li>
         <li><a href="#"><i class="fa fa-users"></i> <span>Customers</span></a></li>
-        <li><a href="#"><i class="fa fa-grav"></i> <span>Recruitments</span></a></li>
+        <li class="treeview"><a href="#"><i class="fa fa-grav"></i> <span>Partner</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+           <ul class="treeview-menu">
+            <li><a href="{{url('admin/PT')}}"><i class="fa fa-circle-o"></i>Partners</a></li>
+            <li><a href="{{url('admin/RE')}}"><i class="fa fa-circle-o"></i>Recruitments</a></li>
+            <li><a href="{{url('admin/TOUR')}}"><i class="fa fa-circle-o"></i>Tours</a></li>
+            <li><a href="{{url('admin/PTtype')}}"><i class="fa fa-circle-o"></i>Partner Type</a></li>
+          </ul>
+        </li>
         <li><a href="{{url('admin/services')}}" id="services"><i class="glyphicon glyphicon-hourglass"></i> <span> Services</span></a></li>
         <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i> <span>Promotions</span></a></li>
         <li><a href="#"><i class="fa fa-question"></i> <span>QAs</span></a></li>
         <li><a href="#"><i class="glyphicon glyphicon-comment"></i> <span>Contacts</span></a></li>
-        <li><a href="#"><i class="fa fa-star-half-o"></i> <span>Tours</span></a></li>
        
       </ul>
       <!-- /.sidebar-menu -->

@@ -17,6 +17,8 @@ class CreateToursTable extends Migration
             $table->increments('id');
             $table->string('tour_name');
             $table->longText('description');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->integer('partner_id')->unsigned()->nullable();
             $table->foreign('partner_id')->references('id')->on('partners');
             $table->timestamps();

@@ -15,7 +15,6 @@ class CreateRecruitmentsTable extends Migration
     {
         Schema::create('recruitments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('company_name');
             $table->string('title');
             $table->date('submit_date');
             $table->longText('description');
