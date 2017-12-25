@@ -35,16 +35,17 @@ class AdminCustomerController extends Controller
 //------------------------------------------------------------------------------------------
     public function update(Request $rq)//edit by ajax
     {  
-      $id = $rq->id_edit;
-      $customer =Customer::find($id);
-      $customer ->name = $rq ->name;
-      $customer ->phone = $rq ->phone;
-      $customer ->address = $rq ->address;
-      $customer ->email = $rq ->email;
-      $customer ->facebook = $rq ->facebook;
-      $customer->save();
-      $customers = Customer::orderBy('id','desc')->get();
-      $view = view('admin.ajaxcustomer')->with(['customers'=>$customers]);
+         
+    $id = $rq->id_edit;     
+    $customer =Customer::find($id);
+    $customer ->name = $rq ->name;
+    $customer ->phone = $rq ->phone;
+    $customer ->address = $rq ->address;
+    $customer ->email = $rq ->email;
+   $customer ->facebook = $rq ->facebook;
+    $customer->save();
+   $customers = Customer::orderBy('id','desc')->get();
+   $view = view('admin.ajaxcustomer')->with(['customers'=>$customers]);
       return Response($view);
     }
 //------------------------------------------------------------------------------------
