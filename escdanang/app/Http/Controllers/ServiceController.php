@@ -18,14 +18,7 @@ class ServiceController extends Controller
       $service ->type_of_service = $rq ->typeSV;
       $service ->price = $rq ->priceSV;
       $service ->short_description = $rq ->desc_Short;
-      $input = $rq->description;
-      $search = array(
-        '@<script[^>]*?>.*?</script>@si',   // Loại bỏ javascript
-        '@<[\/\!]*?[^<>]*?>@si',            // Loại bỏ HTML tags
-        '@<style[^>]*?>.*?</style>@siU',    // Loại bỏ style tags
-        '@<![\s\S]*?--[ \t\n\r]*>@'         // Loại bỏ multi-line comments
-      );
-      $service->description = preg_replace($search, '', $input);    
+      $service->description = $rq->content_hi_add;    
       $file = $rq->imageSV;
         if($file != ''){
           $filename =$file->getClientOriginalName();
@@ -36,7 +29,7 @@ class ServiceController extends Controller
         }
       $service ->save();
       $services = LegalServicesModel::orderBy('id','desc')->get();
-      $view = view('admin.viewajax')->with(['services'=>$services]);
+      $view = view('admin.Service.viewajax')->with(['services'=>$services]);
       return Response($view);
     }
 //------------------------------------------------------------------------------------------
@@ -55,17 +48,13 @@ class ServiceController extends Controller
       $id = $rq->id_edit;
       $service =LegalServicesModel::find($id);
       $service ->service_name = $rq ->nameSV;
-      $service ->type_of_service = $rq ->typeSV;
+      $test = $rq ->typeSV;
+      if($test !='0'){
+        $service ->type_of_service =$test;
+      }
       $service ->price = $rq ->priceSV;
       $service ->short_description = $rq ->desc_Short;
-      $input = $rq->description;
-      $search = array(
-        '@<script[^>]*?>.*?</script>@si',   // Loại bỏ javascript
-        '@<[\/\!]*?[^<>]*?>@si',            // Loại bỏ HTML tags
-        '@<style[^>]*?>.*?</style>@siU',    // Loại bỏ style tags
-        '@<![\s\S]*?--[ \t\n\r]*>@'         // Loại bỏ multi-line comments
-      );
-      $service->description = preg_replace($search, '', $input); 
+      $service->description = $rq->content_hi_edit; 
       $file = $rq->imageSV;
         if($file != ''){
           $filename =$file->getClientOriginalName();
@@ -78,7 +67,7 @@ class ServiceController extends Controller
         }  
       $service->save();
       $services = LegalServicesModel::orderBy('id','desc')->get();
-      $view = view('admin.viewajax')->with(['services'=>$services]);
+      $view = view('admin.Service.viewajax')->with(['services'=>$services]);
       return Response($view);
     }
 //------------------------------------------------------------------------------------
@@ -92,7 +81,7 @@ class ServiceController extends Controller
         $service->delete();
       }
       $services = LegalServicesModel::orderBy('id','desc')->get();
-      $view = view('admin.viewajax')->with(['services'=>$services]);
+      $view = view('admin.Service.viewajax')->with(['services'=>$services]);
       return Response($view);
     }
 }
