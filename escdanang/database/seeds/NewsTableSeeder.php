@@ -12,7 +12,7 @@ class NewsTableSeeder extends Seeder
     public function run()
     {
         DB::table('news')->insert([
-            ['title' => 'hhhhhhh', 'description' => 'kkkkkkkkkkk', 'image' => '', 'submit_date'=>'30-11-2017', 'content'=>'dddd', 'user_id'=>'1']
+            ['title' => 'hhhhhhh', 'short_description' => 'kkkkkkkkkkk','type' => 'news', 'image' => '', 'content'=>'dddd', 'user_id'=>'1','type' => 'news', 'start_date' => '2017-10-12', 'end_date' => '2017-10-17']
         ]);
     }
 }

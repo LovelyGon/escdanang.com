@@ -6,7 +6,7 @@
       </h1>
       <ol class="breadcrumb" style="left: 30px">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Customer</a></li>
+        <li><a href="#">News</a></li>
       </ol>
 	</section>
 @stop
@@ -17,7 +17,7 @@
         <div class="box-body">
         <fieldset style="border: 1px solid #ecf0f5 ;margin: 10px">
           <legend style =" margin-left: 15px;border: none; width: auto" style =" margin-left: 15px;border: none; width: auto;"><strong style="font-size:30px ">News</strong></legend>
-          <div style="margin: 15px" ><button  id="modal" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus" id="btn_add"></span>Add news</button></div>
+          <div style="margin: 15px" ><button  id="modal" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span>Add news</button></div>
           <div style="margin: 15px" id="result">
 
           <table class="table table-striped table-bordered table-hover" id="result_table">
@@ -30,10 +30,10 @@
                         <th class="th_center">Action</th>
                     </tr>
                    </thead>
-                   <tbody  id="news-list" name="news-list">
+                   <tbody>
                    
                       @foreach($news as $new_er)
-                      <tr id="news{{$new_er->id}}">
+                      <tr>
                         <td class="text-left">{{ $new_er->title }}</td>
                             <td class="text-left">{{ $new_er->type }}</td>
                             <td class="text-left">{{ $new_er->short_description }}</td>
@@ -63,11 +63,88 @@
   </div>
 
 
+ 
 
 
-  
 
-        <!--   Modal  Edit-->
+
+          <!--   Modal  Add-->
+<div class="modal fade" id="myModal" role="dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg"> 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><strong>Add News</strong></h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" action="{{url('admin/addNews')}}" method="post" id="addNews" enctype="multipart/form-data">
+            {!! csrf_field() !!}
+              <div class="box-body">
+                 <div class="form-group">
+                  <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">Type</label>
+                  <div class="col-sm-10">
+                     <select name="type" class="form-control" id="type">
+                      <option value="0" id="op_id">--Choose News--</option>
+                      <option value="news"> News</option>
+                      <option value="promotion" >Promotion</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">Title</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" style=" width: 686px;" id="title" name="title">
+                  </div>
+                </div>
+                <div class="form-group" id="hide">
+                  <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">Start date</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" style=" width: 686px;" id="start_date1" name="start">
+                  </div>
+                </div>
+                <div class="form-group"  id="hide1">
+                  <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">End date</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" style=" width: 686px;" id="end" name="end">
+                  </div>
+                </div>
+                 <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: left">short description</label>
+                  <div class="col-sm-10">
+                    <textarea name="short_description" id="short_description" cols="20" rows="5" class="form-control" style="width: -webkit-fill-available;"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label" style="text-align: left">Content</label>
+                  <div class="col-sm-10 " id="desc_error">
+                    <textarea name="content" id="add_desc" cols="10" rows="5" class="form-control" ></textarea>
+                    <script>CKEDITOR.replace('add_desc');</script>
+                  </div>
+                </div>
+               
+                 <div class="form-group">
+                  <label class="col-sm-2 control-label" style="text-align: left"></label>
+                  <div class="col-sm-10" id="demo" >
+                  <input type="file" class="input09" name="image" id="image"> 
+                  </div>
+                </div>
+                </div>
+                
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary pull-right submit" id="save">Save</button>
+                <button type="button" class="btn btn-default pull-right" style="margin-right: 10px" data-dismiss="modal">Cancel</button>  
+              </div>
+              <!-- /.box-footer -->
+            </form>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+
+  <!--   Modal  Edit-->
   
   <div class="modal fade" id="myModal_Edit" role="dialog">
     <div class="modal-dialog modal-lg"> 
@@ -95,19 +172,19 @@
                 <div class="form-group">
                   <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">Title</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" style=" width: 686px;" id="title" name="title">
+                    <input type="text" class="form-control"  style=" width: 686px;" id="title" name="title">
                   </div>
                 </div>
                 <div class="form-group" id="hide">
                   <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">Start date</label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control" style=" width: 686px;" id="start" name="start">
+                    <input type="date" class="form-control" style=" width: 686px;" id="start_date" name="start_date">
                   </div>
                 </div>
                 <div class="form-group"  id="hide1">
                   <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">End date</label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control" style=" width: 686px;" id="end" name="end">
+                    <input type="date" class="form-control"  style=" width: 686px;" id="end_date" name="end_date">
                   </div>
                 </div>
                  <div class="form-group">
@@ -143,26 +220,12 @@
     </div>
   </div> 
 
-
-
- 
+</div>
 
 
 @stop
 @section('script')
-<!-- <script type="text/javascript">
-$(function() {
-    $('input[name="date"]').daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true
-    }, 
-    function(start, end, label) {
-        var years = moment().diff(start, 'years');
-        alert("You are " + years + " years old.");
-    });
-});
 
-</script> -->
   <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js"></script>
@@ -195,12 +258,12 @@ $(function() {
  
     $(function () {
         $("#type").change(function () {
-            if ($(this).val() == "promotion") {
-                $("#hide").show();
-                 $("#hide1").show();
-            } else {
+            if ($(this).val() == "news") {
                 $("#hide").hide();
-                $("#hide1").hide();
+                 $("#hide1").hide();
+            } else {
+                $("#hide").show();
+                $("#hide1").show();
             }
         });
     });
@@ -210,20 +273,20 @@ $(function() {
 
      //---------------------------------------------------------------
      
-     // $('#addNews').validate({ // validate form add
-     //    ignore: [],
-     //    debug: false,
-     //    rules:{
-     //      title:{
-     //        required:true
-     //      }
-     //    },
-     //     messages:{
-     //       title:{
-     //         required:'News name is required and cannot be empty.'
-     //       } 
-     //      },
-     //   });
+     $('#addNews').validate({ // validate form add
+        ignore: [],
+        debug: false,
+        rules:{
+          title:{
+            required:true
+          }
+        },
+         messages:{
+           title:{
+             required:'News name is required and cannot be empty.'
+           } 
+          },
+       });
 
      //----------------------------------------------------------------------
     // add new ajax
@@ -237,12 +300,14 @@ $(function() {
    }
   });
 
+
      //---------------------------------------------------------------------
     $('#editNews').ajaxForm({ // edit by ajax
        success: function(response) {
           $('#editNews')[0].reset();
           $('#myModal_Edit').modal('hide');
           $('#result').html(response);
+          //console.log(response);
       }
     });
 
@@ -256,14 +321,14 @@ $(function() {
               url: 'editNews',
               data: {'id': $id},
             success: function(data){
-              console.log(data);
+             console.log(data);
                $('#title').attr('value', data[0]);
-              $('#op_id').text(data[1]);
-             $('#start').attr('value', data[2]);
-              $('#end').attr('value', data[3]);
-              $('#short_description').val(data[4]); 
-               CKEDITOR.instances['edit_desc'].setData(data[5]);
-               $('#id_edit').attr('value', data[6]);
+               $('#op_id').text(data[1]);
+              $('#short_description').val(data[2]); 
+               CKEDITOR.instances['edit_desc'].setData(data[3]);
+               $('#id_edit').attr('value', data[4]);
+              $('#start_date').attr('value',data[5]);
+              $('#end_date').attr( 'value',data[6]);
             }
           });
         });
@@ -274,7 +339,7 @@ $(function() {
        event.preventDefault();
         $id = $(this).attr('delete_id');
         $(this).confirm({
-         title:'Delete News confirmation.',
+         title:'Confirmation.',
          text:'Are you sure want to delete ?',
          confirm: function() {
             $.ajax({

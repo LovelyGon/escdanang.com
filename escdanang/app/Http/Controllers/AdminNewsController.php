@@ -10,11 +10,7 @@ use Illuminate\Support\Facades\Input;
 
 class AdminNewsController extends Controller
 {
-    public function index()
-    {
-        $news = News::orderBy('id','desc')->get();
-        return view('admin.adminNews')->with(['news'=>$news]);
-    }
+   
     public function store(Request $rq)
     {
       $new_er = new News;
@@ -41,8 +37,8 @@ class AdminNewsController extends Controller
         }
         $new_er ->save();
         $news = News::orderBy('id','desc')->get();
-      $view = view('admin.ajaxNews')->with(['news'=>$news]);
-      return Response($view);
+      $view = view('admin.ajaxNews')->with('news', $news);
+      return response($view);
     }
 
  //------------------------------------------------------------------------------------------
@@ -51,19 +47,19 @@ class AdminNewsController extends Controller
         if($rq->ajax()){
            $id =$rq->id;
            $edit = News::find($id);
-           $result =[$edit->title,$edit->type,$edit->image,$edit->short_description,$edit->start,$edit->end,$edit->id];
+           $result =[$edit->title,$edit->type,$edit->short_description,$edit->content,$edit->id,$edit->start_date,$edit->end_date];
        }
-       return Response($result);
+       return response($result);
     }
-//------------------------------------------------------------------------------------------
+ //------------------------------------------------------------------------------------------
     public function update(Request $rq)//edit by ajax
     {  
       $id = $rq->id_edit;
       $new_er =News::find($id);
       $new_er ->title = $rq ->title;
       $new_er ->type = $rq ->type;
-      $new_er ->start = $rq ->start;
-      $new_er ->end = $rq ->end;
+      $new_er ->start_date = $rq ->start_date;
+      $new_er ->end_date = $rq ->end_date;
       $new_er ->short_description = $rq ->short_description;
       $input = $rq->content;
       $search = array(
@@ -79,16 +75,18 @@ class AdminNewsController extends Controller
           $images = time(). "_" . $filename;
           $destinationPath = public_path('images');
           $file->move($destinationPath, $images);
-          $oldfile = $service->image;
+          $oldfile = $new_er->image;
           Storage::delete($oldfile);
           $new_er->image = $images;
-      }
+        }  
+
+     
       $new_er->save();
       $news = News::orderBy('id','desc')->get();
-      $view = view('admin.ajaxNews')->with(['news'=>$news]);
-      return Response($view);
+      $view = view('admin.ajaxNews')->with('news', $news);
+       return response(  $view);
     }
-// //------------------------------------------------------------------------------------
+ //------------------------------------------------------------------------------------
     public function destroy(Request $rq)
     { 
       if($rq->ajax()){
@@ -100,5 +98,11 @@ class AdminNewsController extends Controller
       $view = view('admin.ajaxNews')->with(['news'=>$news]);
       return response($view);
     }
+  //-------------------------------------------------------------------------------------------
+     public function index()
+    {
+        $news = News::orderBy('id','desc')->get();
+        return view('admin.adminNews')->with(['news'=>$news]);
+    }
    
- }
+  }
