@@ -19,7 +19,7 @@ class CreateCustomersTable extends Migration
             $table->integer('phone');
             $table->string('address');
             $table->string('email');
-            $table->string('facebook');
+            $table->string('facebook')->nullable()->default(null);;
             $table->timestamps();
         });
     }

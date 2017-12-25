@@ -78,33 +78,33 @@
             <input type="hidden" name="id_edit"  id="id_edit" value="">
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">Customer name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style=" width: 430px;" id="name" name="name">
+                  <label for="inputEmail" class="col-sm-3 control-label" style="text-align: left">Customer name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" style=" width: 385px;" id="name" name="name">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">Phone</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style=" width: 430px;" id="phone" name="phone">
+                  <label for="inputEmail" class="col-sm-3 control-label" style="text-align: left">Phone</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" style=" width: 385px;" id="phone" name="phone">
                   </div>
                 </div>
                <div class="form-group">
-                  <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">Address</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style=" width: 430px;" id="address" name="address">
+                  <label for="inputEmail" class="col-sm-3 control-label" style="text-align: left">Address</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" style=" width: 385px;" id="address" name="address">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">Email</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control"  style=" width: 430px;" id="email" name="email">
+                  <label for="inputEmail" class="col-sm-3 control-label" style="text-align: left">Email</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control"  style=" width: 385px;" id="email" name="email">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left">Facebook</label>
-                  <div class="col-sm-10">
-                    <input type="url" class="form-control" style=" width: 430px;" id="facebook" name="facebook">
+                  <label for="inputEmail" class="col-sm-3 control-label" style="text-align: left">Facebook</label>
+                  <div class="col-sm-9">
+                    <input type="url" class="form-control" style=" width: 385px;" id="facebook" name="facebook">
                   </div>
                 </div>
                 </div>
@@ -136,33 +136,33 @@
             {!! csrf_field() !!}
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Customer name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style=" width: 430px;" id="name" name="name">
+                  <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left">Customer name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" style=" width: 385px;" id="name" name="name">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Phone</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style=" width: 430px;" id="phone" name="phone">
+                  <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left">Phone</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" style=" width: 385px;" id="phone" name="phone">
                   </div>
                 </div>
                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Address</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style=" width: 430px;" id="address" name="address">
+                  <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left">Address</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" style=" width: 385px;" id="address" name="address">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Email</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control"  style=" width: 430px;" id="email" name="email">
+                  <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left">Email</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control"  style=" width: 385px;" id="email" name="email">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left">Facebook</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" style=" width: 430px;" id="facebook" name="facebook">
+                  <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left">Facebook</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" style=" width: 385px;" id="facebook" name="facebook">
                   </div>
                 </div>
                 
@@ -268,7 +268,7 @@
        event.preventDefault();
         $id = $(this).attr('delete_id');
         $(this).confirm({
-         title:'Delete Service confirmation.',
+         title:'Confirmation.',
          text:'Are you sure want to delete ?',
          confirm: function() {
             $.ajax({

@@ -8,22 +8,23 @@
                         <th class="th_center">Action</th>
                     </tr>
                    </thead>
-                   <tbody  id="news-list" name="news-list">
+                   <tbody>
                    
-                      @foreach($news as $new)
-                      <tr id="news{{$new->id}}">
-                        <td class="text-left">{{ $new->title }}</td>
-                            <td class="text-left">{{ $new->type }}</td>
-                            <td class="text-left">{{ $new->short_description }}</td>
-                            <td class="text-left">{{substr($new->content,0,50)}}</td>
+                      @foreach($news as $new_er)
+                      <tr >
+                        <td class="text-left">{{ $new_er->title }}</td>
+                            <td class="text-left">{{ $new_er->type }}</td>
+                            <td class="text-left">{{ $new_er->short_description }}</td>
+                            <td class="text-left">{{substr($new_er->content,0,50)}}</td>
                             
-                        <td class="text-center"><a edit_id="{{$new->id}}" class="edit_ajax" id="modal"  data-toggle="modal" data-target="#myModal_Edit"><span class="glyphicon glyphicon-pencil"></span></a>
-                        <a href=""  style="margin-left: 8px" delete_id="{{$new->id}}" class="simpleConfirm"><span class="glyphicon glyphicon-trash"></span></a></td>
+                        <td class="text-center"><a edit_id="{{$new_er->id}}" class="edit_ajax" id="modal"  data-toggle="modal" data-target="#myModal_Edit"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href=""  style="margin-left: 8px" delete_id="{{$new_er->id}}" class="simpleConfirm"><span class="glyphicon glyphicon-trash"></span></a></td>
                       </tr>
                       @endforeach
                   
                    </tbody>
                </table>
+ 
 
   <script>
       $(function () {
@@ -41,7 +42,7 @@
             },{ "targets": 3,"orderable": false}]
       });
     });
-
+// --------------------------------------------------------------------------------
 
   $('.edit_ajax').click(function(event){ // ajax do du lieu vao form edit
           event.preventDefault();
@@ -51,24 +52,26 @@
               url: 'editNews',
               data: {'id': $id},
             success: function(data){
+              // console.log(data);
               $('#title').attr('value', data[0]);
               $('#op_id').text(data[1]);
-             $('#start').attr('value', data[2]);
-              $('#end').attr('value', data[3]);
-              $('#short_description').val(data[4]); 
-               CKEDITOR.instances['edit_desc'].setData(data[5]);
-               $('#id_edit').attr('value', data[6]);
+              $('#short_description').val(data[2]); 
+               CKEDITOR.instances['edit_desc'].setData(data[3]);
+              $('#id_edit').attr('value', data[4]);
+              $('#start_date').attr('value',data[5]);
+              $('#end_date').attr( 'value',data[6]);
             }
           });
         });  
 
+// ------------------------------------------------------------------------------------
   
     $(document).ready(function(){
      $(".simpleConfirm").click(function(event){// delete by ajax
        event.preventDefault();
         $id = $(this).attr('delete_id');
         $(this).confirm({
-         title:'Delete News confirmation.',
+         title:'Confirmation.',
          text:'Are you sure want to delete ?',
          confirm: function() {
             $.ajax({
@@ -80,6 +83,7 @@
             }
           });         
           }
+          });
           });
           });        
         
