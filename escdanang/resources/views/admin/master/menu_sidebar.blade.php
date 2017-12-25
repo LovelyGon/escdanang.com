@@ -29,7 +29,7 @@
         <li class="header" style="color: white; font-size: 25px;">Main Functions</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="#"><i class="fa fa-user"></i> <span>User</span></a></li>
-        <li><a href="#"><i class="fa fa-users"></i> <span>Customers</span></a></li>
+        <li><a href="{{url('admin/customers')}}"><i class="fa fa-users"></i> <span>Customers</span></a></li>
         <li class="treeview"><a href="#"><i class="fa fa-grav"></i> <span>Partner</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -42,9 +42,9 @@
           </ul>
         </li>
         <li><a href="{{url('admin/services')}}" id="services"><i class="glyphicon glyphicon-hourglass"></i> <span> Services</span></a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-asterisk"></i> <span>Promotions</span></a></li>
+        <li><a href="{{url('admin/news')}}"><i class="glyphicon glyphicon-asterisk"></i> <span>News</span></a></li>
         <li><a href="#"><i class="fa fa-question"></i> <span>QAs</span></a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-comment"></i> <span>Contacts</span></a></li>
+        <li><a href="{{url('admin/contacts')}}"><i class="glyphicon glyphicon-comment"></i> <span>Contacts</span></a></li>
        
       </ul>
       <!-- /.sidebar-menu -->
