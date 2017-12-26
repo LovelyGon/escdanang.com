@@ -33,7 +33,7 @@ Route::post('admin/editCustomers', 'AdminCustomerController@update');
 
 Route::get('admin/news', 'AdminNewsController@index');
 Route::post('admin/addNews','AdminNewsController@store');
-Route::get('admin/editNews', 'AdminNewsController@edit');
+Route::get('admin/edit', 'AdminNewsController@edit');
 Route::post('admin/editNews', 'AdminNewsController@update');
 Route::get('admin/deleteNews', 'AdminNewsController@destroy');
 
