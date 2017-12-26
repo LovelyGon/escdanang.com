@@ -292,11 +292,12 @@ $('.edit_ajax').click(function(event){ // ajax do du lieu vao form edit
           $id = $(this).attr('edit_id');     
             $.ajax({
              type: "get",
-              url: 'edit',
+              url: 'editCT',
               data: {'id': $id},
             success: function(data){
+             
               $('#name1').attr('value', data[0]);
-               $('#phone1').attr('value', data[1]);
+              $('#phone1').attr('value', data[1]);
               $('#address1').attr('value', data[2]);
               $('#email1').attr('value', data[3]);
               $('#facebook1').attr('value', data[4]);

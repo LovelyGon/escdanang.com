@@ -27,7 +27,7 @@ Route::get('admin/deleteSV','ServiceController@Delete');
 
 Route::get('admin/customers', 'AdminCustomerController@index');
 Route::post('admin/add', 'AdminCustomerController@store');
-Route::get('admin/edit', 'AdminCustomerController@edit');
+Route::get('admin/editCT', 'AdminCustomerController@edit');
 Route::post('admin/editCustomers', 'AdminCustomerController@update');
  Route::get('admin/delete', 'AdminCustomerController@destroy');
 

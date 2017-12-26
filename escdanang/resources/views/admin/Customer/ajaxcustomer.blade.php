@@ -66,7 +66,7 @@
           $id = $(this).attr('edit_id');  
             $.ajax({
              type: "get",
-              url: 'edit',
+              url: 'editCT',
               data: {'id': $id},
             success: function(data){
               $('#name1').attr('value', data[0]);
